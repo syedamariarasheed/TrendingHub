@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TrendingHub</string>
+    <string name="trendingList">Trending List</string>
+    <string name="loading">Loading</string>
 </resources>

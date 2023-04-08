@@ -1,4 +1,4 @@
-package com.trendinghub
+package com.trendinghub.ui.base
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.trendinghub.ui.theme.TrendingHubTheme
+import com.trendinghub.ui.base.theme.TrendingHubTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
