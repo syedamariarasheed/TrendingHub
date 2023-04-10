@@ -2,11 +2,8 @@ package com.trendinghub.ui
 
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onAllNodesWithTag
-import androidx.compose.ui.test.onFirst
-import androidx.compose.ui.test.onNodeWithTag
 import com.trendinghub.MainActivity
 import com.trendinghub.R
 import com.trendinghub.ui.common.MockProvider.getTrendingData
@@ -47,21 +44,31 @@ class TrendingListScreenTest {
             composeTestRule.activity.getString(R.string.trending_list)
         ).assertIsDisplayed()
 
-        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
-            R.string.user_name
-        )).assertIsDisplayed()
-        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
-            R.string.repository_name
-        )).assertIsDisplayed()
-        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
-            R.string.language
-        )).assertIsDisplayed()
-        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
-            R.string.stargazers_count
-        )).assertIsDisplayed()
-        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
-            R.string.user_avatar
-        )).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(
+                R.string.user_name
+            )
+        ).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(
+                R.string.repository_name
+            )
+        ).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(
+                R.string.language
+            )
+        ).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(
+                R.string.stargazers_count
+            )
+        ).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(
+                R.string.user_avatar
+            )
+        ).assertIsDisplayed()
         composeTestRule.onNodeWithTag(
             composeTestRule.activity.getString(R.string.loading)
         ).assertDoesNotExist()
@@ -69,7 +76,15 @@ class TrendingListScreenTest {
 
 
     @Test
-    fun showDataNotFound() {
+    fun showTrendingListError() {
+        composeTestRule.onAllNodesWithTag(
+            composeTestRule.activity.getString(R.string.loading)
+        ).onFirst().assertIsDisplayed()
 
+        trendingUiState.value = TrendingUiState.Error
+
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(R.string.data_not_found)
+        ).assertIsDisplayed()
     }
 }

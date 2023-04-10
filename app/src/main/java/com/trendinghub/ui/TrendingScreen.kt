@@ -29,7 +29,10 @@ fun TrendingScreen(
                 is TrendingUiState.TrendingList -> {
                     TrendingRepositoryListView(trendingDataList = trendingUiState.data)
                 }
-                else -> {}
+
+                is TrendingUiState.Error -> {
+
+                }
             }
         }
     }

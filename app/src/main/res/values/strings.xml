@@ -8,4 +8,6 @@
     <string name="stargazers_count">stargazers count</string>
     <string name="user_avatar">user avatar</string>
     <string name="trending">Trending</string>
+    <string name="data_not_found">data not found</string>
+    <string name="retry">retry</string>
 </resources>
