@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">TrendingHub</string>
-    <string name="trendingList">Trending List</string>
+    <string name="trending_list">Trending List</string>
     <string name="loading">Loading</string>
+    <string name="user_name">username</string>
+    <string name="repository_name">repository name</string>
+    <string name="language">language</string>
+    <string name="stargazers_count">stargazers count</string>
+    <string name="user_avatar">user avatar</string>
 </resources>
