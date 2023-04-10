@@ -1,4 +1,4 @@
-package com.trendinghub.ui
+package com.trendinghub.ui.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.FastOutSlowInEasing

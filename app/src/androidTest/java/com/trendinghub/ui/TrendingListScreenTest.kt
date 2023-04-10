@@ -9,7 +9,7 @@ import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithTag
 import com.trendinghub.MainActivity
 import com.trendinghub.R
-import com.trendinghub.ui.base.MockProvider.getTrendingData
+import com.trendinghub.ui.common.MockProvider.getTrendingData
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

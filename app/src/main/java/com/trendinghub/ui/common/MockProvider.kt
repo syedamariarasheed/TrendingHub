@@ -1,4 +1,4 @@
-package com.trendinghub.ui.base
+package com.trendinghub.ui.common
 
 import com.trendinghub.domain.model.TrendingData
 

@@ -1,4 +1,4 @@
-package com.trendinghub.ui.base.theme
+package com.trendinghub.ui.common.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
