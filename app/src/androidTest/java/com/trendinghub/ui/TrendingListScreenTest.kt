@@ -3,17 +3,16 @@ package com.trendinghub.ui
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithTag
+import com.trendinghub.MainActivity
 import com.trendinghub.R
-import com.trendinghub.domain.model.TrendingData
-import com.trendinghub.ui.base.MainActivity
-
-import org.junit.Test
-
+import com.trendinghub.ui.base.MockProvider.getTrendingData
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -28,7 +27,7 @@ class TrendingListScreenTest {
     private val trendingUiState = mutableStateOf<TrendingUiState>(TrendingUiState.Loading)
 
     @Before
-    fun setup(){
+    fun setup() {
         composeTestRule.activity.setContent {
             TrendingScreen(
                 trendingUiState.value
@@ -38,26 +37,34 @@ class TrendingListScreenTest {
 
     @Test
     fun showTrendingList() {
-        composeTestRule.onNodeWithTag(
+        composeTestRule.onAllNodesWithTag(
             composeTestRule.activity.getString(R.string.loading)
-        ).assertIsDisplayed()
+        ).onFirst().assertIsDisplayed()
 
-        trendingUiState.value = TrendingUiState.TrendingList(
-            listOf(
-                TrendingData(
-                    repoName = "test",
-                    imageUrl = "https://image.com",
-                    userName = "maria"
-                )
-            )
-        )
+        trendingUiState.value = TrendingUiState.TrendingList(listOf(getTrendingData()))
 
         composeTestRule.onNodeWithTag(
-            composeTestRule.activity.getString(R.string.trendingList)
+            composeTestRule.activity.getString(R.string.trending_list)
         ).assertIsDisplayed()
+
+        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
+            R.string.user_name
+        )).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
+            R.string.repository_name
+        )).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
+            R.string.language
+        )).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
+            R.string.stargazers_count
+        )).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(composeTestRule.activity.getString(
+            R.string.user_avatar
+        )).assertIsDisplayed()
         composeTestRule.onNodeWithTag(
             composeTestRule.activity.getString(R.string.loading)
-        ).assertIsNotDisplayed()
+        ).assertDoesNotExist()
     }
 
 
