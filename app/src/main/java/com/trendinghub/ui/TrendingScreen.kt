@@ -31,7 +31,7 @@ fun TrendingScreen(
                 }
 
                 is TrendingUiState.Error -> {
-
+                    
                 }
             }
         }
@@ -39,7 +39,7 @@ fun TrendingScreen(
 }
 
 @Composable
-@Preview(showSystemUi = true)
+@Preview(showSystemUi = true,)
 fun TrendingScreenLoadingPreview() {
     TrendingScreen(trendingUiState = TrendingUiState.Loading)
 }

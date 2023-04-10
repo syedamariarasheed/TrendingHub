@@ -40,7 +40,6 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                 .constrainAs(avatar) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
-                    bottom.linkTo(parent.bottom)
                 }
                 .testTag(stringResource(id = R.string.user_avatar)),
             placeholder = rememberVectorPainter(image = Icons.Default.Person),
@@ -66,7 +65,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                     start.linkTo(avatar.end)
                 }
                 .testTag(stringResource(id = R.string.repository_name)),
-            style = TextStyle(color = Color.Black, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold)
         )
 
         Text(
@@ -80,7 +79,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
         )
         Image(
             painter = rememberVectorPainter(image = Icons.Default.Star),
-            colorFilter = ColorFilter.tint(Color.Magenta), contentDescription = "star",
+            colorFilter = ColorFilter.tint(Color.Yellow), contentDescription = "star",
             modifier = Modifier.constrainAs(starIcon) {
                 top.linkTo(repositoryName.bottom)
                 start.linkTo(language.end, 10.dp)
@@ -99,7 +98,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
             color = Color.LightGray,
             modifier = Modifier
                 .constrainAs(divider) {
-                    top.linkTo(stargazersCount.bottom, 10.dp)
+                    top.linkTo(stargazersCount.bottom, 20.dp)
                     bottom.linkTo(parent.bottom)
                 }
         )
