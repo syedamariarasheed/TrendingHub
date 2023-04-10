@@ -7,4 +7,5 @@
     <string name="language">language</string>
     <string name="stargazers_count">stargazers count</string>
     <string name="user_avatar">user avatar</string>
+    <string name="trending">Trending</string>
 </resources>
