@@ -9,5 +9,7 @@
     <string name="user_avatar">user avatar</string>
     <string name="trending">Trending</string>
     <string name="data_not_found">data not found</string>
-    <string name="retry">retry</string>
+    <string name="retry">RETRY</string>
+    <string name="error_message">Something went wrong</string>
+    <string name="error_description">An alien is probably blocking your signal</string>
 </resources>
