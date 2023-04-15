@@ -1,7 +1,9 @@
 package com.trendinghub.ui
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -11,6 +13,7 @@ import com.trendinghub.R
 import com.trendinghub.ui.common.AnimatedShimmer
 import com.trendinghub.ui.common.MockProvider
 import com.trendinghub.ui.common.ToolBar
+import com.trendinghub.ui.common.theme.TrendingHubTheme
 
 @Composable
 fun TrendingScreen() {
@@ -42,6 +45,7 @@ fun TrendingScreen(
                         AnimatedShimmer()
                     }
                 }
+
                 is TrendingUiState.TrendingList -> {
                     TrendingRepositoryListView(trendingDataList = trendingUiState.data)
                 }
@@ -57,11 +61,45 @@ fun TrendingScreen(
 @Composable
 @Preview(showSystemUi = true)
 fun TrendingScreenLoadingPreview() {
-    TrendingScreen(trendingUiState = TrendingUiState.Loading) {}
+    TrendingScreen(trendingUiState = TrendingUiState.Loading, onRetry = {})
 }
 
 @Composable
 @Preview(showSystemUi = true)
 fun TrendingScreenListingPreview() {
-    TrendingScreen(trendingUiState = TrendingUiState.TrendingList(listOf(MockProvider.getTrendingData()))) {}
+    TrendingScreen(
+        trendingUiState = TrendingUiState.TrendingList(
+            listOf(
+                MockProvider.getTrendingData(),
+                MockProvider.getTrendingData(),
+                MockProvider.getTrendingData()
+            )
+        ),
+        onRetry = {}
+    )
+}
+
+@Composable
+@Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
+fun TrendingScreenListingPreviewDark() {
+    TrendingHubTheme {
+        Surface {
+            TrendingScreen(
+                trendingUiState = TrendingUiState.TrendingList(
+                    listOf(
+                        MockProvider.getTrendingData(),
+                        MockProvider.getTrendingData(),
+                        MockProvider.getTrendingData()
+                    )
+                ),
+                onRetry = {}
+            )
+        }
+    }
+}
+
+@Composable
+@Preview(showSystemUi = true)
+fun TrendingScreenErrorPreview() {
+    TrendingScreen(trendingUiState = TrendingUiState.Error, onRetry = {})
 }

@@ -5,11 +5,11 @@ import com.trendinghub.domain.model.TrendingData
 object MockProvider {
 
     fun getTrendingData() = TrendingData(
-        repoName = "test",
+        repoName = "TrendingHub",
         userAvatar = "https://avatars.githubusercontent.com/u/4314092?v=4",
-        userName = "maria",
-        stargazersCount = 3000,
-        language = "java"
+        userName = "Maria",
+        stargazersCount = 1000,
+        language = "Kotlin"
     )
 
 }

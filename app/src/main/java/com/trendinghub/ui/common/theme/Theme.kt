@@ -1,15 +1,18 @@
 package com.trendinghub.ui.common.theme
 
+import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
+    primary = Purple,
+    primaryVariant = DarkPurple,
     secondary = Teal200,
     background = Color.Black,
     surface = Color.Black,
@@ -38,6 +41,9 @@ fun TrendingHubTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compo
     } else {
         LightColorPalette
     }
+
+    val activity = LocalView.current.context as Activity
+    activity.window?.statusBarColor = colors.primaryVariant.toArgb()
 
     MaterialTheme(
         colors = colors,

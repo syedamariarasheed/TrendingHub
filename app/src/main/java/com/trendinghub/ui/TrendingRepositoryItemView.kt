@@ -1,12 +1,13 @@
 package com.trendinghub.ui
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Divider
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -25,6 +27,7 @@ import coil.compose.AsyncImage
 import com.trendinghub.R
 import com.trendinghub.domain.model.TrendingData
 import com.trendinghub.ui.common.MockProvider
+import com.trendinghub.ui.common.theme.TrendingHubTheme
 
 @Composable
 fun TrendingRepositoryItemView(trendingData: TrendingData) {
@@ -41,9 +44,11 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
                 }
-                .testTag(stringResource(id = R.string.user_avatar)),
-            placeholder = rememberVectorPainter(image = Icons.Default.Person),
-            error = rememberVectorPainter(image = Icons.Default.Person)
+                .testTag(stringResource(id = R.string.user_avatar))
+                .padding(4.dp)
+               ,
+            placeholder = painterResource(id = R.drawable.icon_placholder),
+            error = painterResource(id = R.drawable.icon_placholder)
         )
 
         Text(
@@ -106,7 +111,23 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
 }
 
 @Composable
-@Preview(showBackground = true)
-private fun PreviewTrendingRepositoryItemView() {
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+private fun PreviewTrendingRepositoryItemViewLight() {
     TrendingRepositoryItemView(MockProvider.getTrendingData())
+}
+
+@Composable
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+private fun PreviewTrendingRepositoryItemViewDark() {
+    TrendingHubTheme {
+        Surface {
+            TrendingRepositoryItemView(MockProvider.getTrendingData())
+        }
+    }
 }
