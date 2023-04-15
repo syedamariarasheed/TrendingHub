@@ -27,7 +27,8 @@ class TrendingScreenTest {
     fun setup() {
         composeTestRule.activity.setContent {
             TrendingScreen(
-                trendingUiState.value
+                trendingUiState.value,
+                onRetry = { trendingUiState.value = TrendingUiState.Loading }
             )
         }
     }
@@ -76,7 +77,7 @@ class TrendingScreenTest {
 
 
     @Test
-    fun showTrendingListError() {
+    fun showTrendingListError()  {
         composeTestRule.onAllNodesWithTag(
             composeTestRule.activity.getString(R.string.loading)
         ).onFirst().assertIsDisplayed()
@@ -86,5 +87,14 @@ class TrendingScreenTest {
         composeTestRule.onNodeWithTag(
             composeTestRule.activity.getString(R.string.data_not_found)
         ).assertIsDisplayed()
+
+        // retry - assert loading
+        composeTestRule.onNodeWithText(composeTestRule.activity.getString(R.string.retry))
+            .performClick()
+
+        composeTestRule.onAllNodesWithTag(
+            composeTestRule.activity.getString(R.string.loading)
+        ).onFirst().assertIsDisplayed()
+
     }
 }

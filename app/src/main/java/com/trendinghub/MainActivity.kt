@@ -1,4 +1,4 @@
-package com.trendinghub.ui.base
+package com.trendinghub
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.trendinghub.ui.base.theme.TrendingHubTheme
+import com.trendinghub.ui.TrendingScreen
+import com.trendinghub.ui.common.theme.TrendingHubTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    TrendingScreen()
                 }
             }
         }
