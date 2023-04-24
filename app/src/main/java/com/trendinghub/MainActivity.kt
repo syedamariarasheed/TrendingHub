@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
 import com.trendinghub.ui.TrendingScreen
 import com.trendinghub.ui.common.theme.TrendingHubTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
