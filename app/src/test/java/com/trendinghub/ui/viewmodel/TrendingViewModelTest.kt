@@ -1,20 +1,62 @@
 package com.trendinghub.ui.viewmodel
 
 import app.cash.turbine.test
+import com.MainDispatcherRule
+import com.trendinghub.common.ResultState
+import com.trendinghub.domain.usecase.FetchTrendingListUseCase
 import com.trendinghub.ui.TrendingUiState
+import com.trendinghub.ui.common.MockProvider
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
+import org.junit.Rule
 import org.junit.Test
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 
-
+@OptIn(ExperimentalCoroutinesApi::class)
 internal class TrendingViewModelTest {
 
-    private val viewModel = TrendingViewModel()
+    // Set Main dispatcher to not run coroutines eagerly
+    @get:Rule
+    val dispatcherRule = MainDispatcherRule()
+
+    private val fetchTrendingList : FetchTrendingListUseCase = mock()
+
+    private val viewModel = TrendingViewModel(fetchTrendingList)
 
     @Test
     fun validateInitialState_Loading() = runTest {
         viewModel.trendingUiState.test {
             Assert.assertTrue(awaitItem() is TrendingUiState.Loading)
+        }
+    }
+
+    @Test
+    fun validateStateFetchTrendingList_Success() = runTest {
+
+        whenever(fetchTrendingList()).thenReturn(
+            flow {
+                emit(
+                    ResultState.Success(
+                        listOf(MockProvider.getTrendingData())
+                    )
+                )
+            }
+        )
+
+        viewModel.trendingUiState.test {
+            viewModel.fetchTrendingList()
+            Assert.assertTrue(awaitItem() is TrendingUiState.Loading)
+            val result = awaitItem()
+            Assert.assertTrue(result is TrendingUiState.TrendingList)
+            result as TrendingUiState.TrendingList
+            Assert.assertTrue(result.data.isNotEmpty())
+            Assert.assertEquals("Maria",result.data.first().userName)
+            Assert.assertEquals("TrendingHub",result.data.first().repoName)
+            Assert.assertEquals(1000,result.data.first().stargazersCount)
+            Assert.assertEquals("Kotlin",result.data.first().language)
         }
     }
 
