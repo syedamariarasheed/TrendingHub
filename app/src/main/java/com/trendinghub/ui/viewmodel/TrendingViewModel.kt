@@ -6,9 +6,11 @@ import com.trendinghub.common.ResultState
 import com.trendinghub.common.collectEmission
 import com.trendinghub.domain.usecase.FetchTrendingListUseCase
 import com.trendinghub.ui.TrendingUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+@HiltViewModel
 class TrendingViewModel
 constructor(val fetchTrendingListUseCase: FetchTrendingListUseCase) : ViewModel() {
 

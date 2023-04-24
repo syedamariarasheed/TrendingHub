@@ -5,26 +5,27 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.trendinghub.R
 import com.trendinghub.ui.common.AnimatedShimmer
 import com.trendinghub.ui.common.MockProvider
 import com.trendinghub.ui.common.ToolBar
 import com.trendinghub.ui.common.theme.TrendingHubTheme
+import com.trendinghub.ui.viewmodel.TrendingViewModel
 
 @Composable
-fun TrendingScreen() {
+fun TrendingScreen(
+    viewModel: TrendingViewModel = hiltViewModel(),
+) {
+    val trendingUiState = viewModel.trendingUiState.collectAsStateWithLifecycle()
 
-    val trendingState = remember {
-        mutableStateOf<TrendingUiState>(TrendingUiState.Error(""))
-    }
-
-    TrendingScreen(trendingUiState = trendingState.value) {
-        trendingState.value = TrendingUiState.Loading
-    }
+    TrendingScreen(
+        trendingUiState = trendingUiState.value,
+        onRetry = viewModel::fetchTrendingList
+    )
 }
 
 @Composable
