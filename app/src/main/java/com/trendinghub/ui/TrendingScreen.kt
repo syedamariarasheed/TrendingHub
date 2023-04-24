@@ -19,7 +19,7 @@ import com.trendinghub.ui.common.theme.TrendingHubTheme
 fun TrendingScreen() {
 
     val trendingState = remember {
-        mutableStateOf<TrendingUiState>(TrendingUiState.Error)
+        mutableStateOf<TrendingUiState>(TrendingUiState.Error(""))
     }
 
     TrendingScreen(trendingUiState = trendingState.value) {
@@ -51,7 +51,7 @@ fun TrendingScreen(
                 }
 
                 is TrendingUiState.Error -> {
-                    TrendingFailureView(onRetry = onRetry)
+                    TrendingFailureView(onRetry = onRetry, trendingUiState.message)
                 }
             }
         }
@@ -101,5 +101,5 @@ fun TrendingScreenListingPreviewDark() {
 @Composable
 @Preview(showSystemUi = true)
 fun TrendingScreenErrorPreview() {
-    TrendingScreen(trendingUiState = TrendingUiState.Error, onRetry = {})
+    TrendingScreen(trendingUiState = TrendingUiState.Error("An alien is blocking your signal"), onRetry = {})
 }

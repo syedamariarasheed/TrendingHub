@@ -33,7 +33,7 @@ import com.trendinghub.ui.common.theme.Green
 import com.trendinghub.ui.common.theme.TrendingHubTheme
 
 @Composable
-fun TrendingFailureView(onRetry: () -> Unit) {
+fun TrendingFailureView(onRetry: () -> Unit, message: String) {
     val composition by rememberLottieComposition(
         LottieCompositionSpec.RawRes(R.raw.retry)
     )
@@ -70,7 +70,7 @@ fun TrendingFailureView(onRetry: () -> Unit) {
         )
 
         Text(
-            text = stringResource(R.string.error_description),
+            text = message,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(0.08f),
@@ -106,7 +106,7 @@ fun TrendingFailureView(onRetry: () -> Unit) {
 fun PreviewTrendingFailureViewDark() {
     TrendingHubTheme {
         Surface {
-            TrendingFailureView(onRetry = {})
+            TrendingFailureView(onRetry = {}, "An alien is blocking your signal")
         }
     }
 }
@@ -120,7 +120,7 @@ fun PreviewTrendingFailureViewDark() {
 fun PreviewTrendingFailureViewLight() {
     TrendingHubTheme {
         Surface {
-            TrendingFailureView(onRetry = {})
+            TrendingFailureView(onRetry = {}, "An alien is blocking your signal")
         }
     }
 }

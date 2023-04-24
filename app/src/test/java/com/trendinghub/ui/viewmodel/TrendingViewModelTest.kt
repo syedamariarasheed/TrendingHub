@@ -22,7 +22,7 @@ internal class TrendingViewModelTest {
     @get:Rule
     val dispatcherRule = MainDispatcherRule()
 
-    private val fetchTrendingList : FetchTrendingListUseCase = mock()
+    private val fetchTrendingList: FetchTrendingListUseCase = mock()
 
     private val viewModel = TrendingViewModel(fetchTrendingList)
 
@@ -36,15 +36,13 @@ internal class TrendingViewModelTest {
     @Test
     fun validateStateFetchTrendingList_Success() = runTest {
 
-        whenever(fetchTrendingList()).thenReturn(
-            flow {
-                emit(
-                    ResultState.Success(
-                        listOf(MockProvider.getTrendingData())
-                    )
+        whenever(fetchTrendingList()).thenReturn(flow {
+            emit(
+                ResultState.Success(
+                    listOf(MockProvider.getTrendingData())
                 )
-            }
-        )
+            )
+        })
 
         viewModel.trendingUiState.test {
             viewModel.fetchTrendingList()
@@ -53,10 +51,31 @@ internal class TrendingViewModelTest {
             Assert.assertTrue(result is TrendingUiState.TrendingList)
             result as TrendingUiState.TrendingList
             Assert.assertTrue(result.data.isNotEmpty())
-            Assert.assertEquals("Maria",result.data.first().userName)
-            Assert.assertEquals("TrendingHub",result.data.first().repoName)
-            Assert.assertEquals(1000,result.data.first().stargazersCount)
-            Assert.assertEquals("Kotlin",result.data.first().language)
+            Assert.assertEquals("Maria", result.data.first().userName)
+            Assert.assertEquals("TrendingHub", result.data.first().repoName)
+            Assert.assertEquals(1000, result.data.first().stargazersCount)
+            Assert.assertEquals("Kotlin", result.data.first().language)
+        }
+    }
+
+    @Test
+    fun validateStateFetchTrendingList_Failure() = runTest {
+
+        whenever(fetchTrendingList()).thenReturn(flow {
+            emit(
+                ResultState.Error(
+                    "Network error"
+                )
+            )
+        })
+
+        viewModel.trendingUiState.test {
+            viewModel.fetchTrendingList()
+            Assert.assertTrue(awaitItem() is TrendingUiState.Loading)
+            val result = awaitItem()
+            Assert.assertTrue(result is TrendingUiState.Error)
+            result as TrendingUiState.Error
+            Assert.assertEquals("Network error", result.message)
         }
     }
 

@@ -27,7 +27,9 @@ constructor(val fetchTrendingListUseCase: FetchTrendingListUseCase) : ViewModel(
                         _trendingUiState.emit(TrendingUiState.TrendingList(it.data))
                     }
 
-                    else -> {}
+                    is ResultState.Error -> {
+                        _trendingUiState.emit(TrendingUiState.Error(it.message))
+                    }
                 }
             }
         }
