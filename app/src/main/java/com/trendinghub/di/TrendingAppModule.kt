@@ -1,5 +1,7 @@
 package com.trendinghub.di
 
+import com.trendinghub.data.remote.source.TrendingRemoteDataSource
+import com.trendinghub.data.remote.source.TrendingRemoteDataSourceImpl
 import com.trendinghub.data.repository.TrendingRepositoryImpl
 import com.trendinghub.domain.repository.TrendingRepository
 import com.trendinghub.domain.usecase.FetchTrendingListUseCase
@@ -19,7 +21,12 @@ object TrendingAppModule {
     }
 
     @Provides
-    fun provideFetchTrendingRepository(): TrendingRepository {
-        return TrendingRepositoryImpl()
+    fun provideFetchTrendingRepository(trendingRemoteDataSource: TrendingRemoteDataSource): TrendingRepository {
+        return TrendingRepositoryImpl(trendingRemoteDataSource)
+    }
+
+    @Provides
+    fun provideTrendingRemoteDataSource(): TrendingRemoteDataSource {
+        return TrendingRemoteDataSourceImpl()
     }
 }
