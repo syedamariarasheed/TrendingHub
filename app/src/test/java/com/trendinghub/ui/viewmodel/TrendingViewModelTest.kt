@@ -24,18 +24,19 @@ class TrendingViewModelTest {
 
     private val fetchTrendingList: FetchTrendingListUseCase = mock()
 
-    private val viewModel = TrendingViewModel(fetchTrendingList)
+    private val viewModel = lazy {
+        TrendingViewModel(fetchTrendingList)
+    }
 
     @Test
     fun validateInitialState_Loading() = runTest {
-        viewModel.trendingUiState.test {
+        viewModel.value.trendingUiState.test {
             Assert.assertTrue(awaitItem() is TrendingUiState.Loading)
         }
     }
 
     @Test
     fun validateStateFetchTrendingList_Success() = runTest {
-
         whenever(fetchTrendingList()).thenReturn(flow {
             emit(
                 ResultState.Success(
@@ -44,8 +45,7 @@ class TrendingViewModelTest {
             )
         })
 
-        viewModel.trendingUiState.test {
-            viewModel.fetchTrendingList()
+        viewModel.value.trendingUiState.test {
             Assert.assertTrue(awaitItem() is TrendingUiState.Loading)
             val result = awaitItem()
             Assert.assertTrue(result is TrendingUiState.TrendingList)
@@ -69,8 +69,7 @@ class TrendingViewModelTest {
             )
         })
 
-        viewModel.trendingUiState.test {
-            viewModel.fetchTrendingList()
+        viewModel.value.trendingUiState.test {
             Assert.assertTrue(awaitItem() is TrendingUiState.Loading)
             val result = awaitItem()
             Assert.assertTrue(result is TrendingUiState.Error)

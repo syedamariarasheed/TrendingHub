@@ -9,9 +9,10 @@ import com.trendinghub.ui.TrendingUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
 @HiltViewModel
-class TrendingViewModel
+class TrendingViewModel @Inject
 constructor(val fetchTrendingListUseCase: FetchTrendingListUseCase) : ViewModel() {
 
     private val _trendingUiState =
@@ -19,6 +20,9 @@ constructor(val fetchTrendingListUseCase: FetchTrendingListUseCase) : ViewModel(
     val trendingUiState: StateFlow<TrendingUiState> =
         _trendingUiState
 
+    init {
+        fetchTrendingList()
+    }
 
     fun fetchTrendingList() = fetchTrendingListUseCase().collectEmission(
         map = {
