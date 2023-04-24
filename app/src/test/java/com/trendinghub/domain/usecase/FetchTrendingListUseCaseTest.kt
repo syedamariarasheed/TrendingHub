@@ -22,7 +22,8 @@ class FetchTrendingListUseCaseTest {
 
     private val repository: TrendingRepository = mock()
 
-   private var fetchTrendingListUseCase : FetchTrendingListUseCase = FetchTrendingListUseCaseImpl(repository)
+    private var fetchTrendingListUseCase: FetchTrendingListUseCase =
+        FetchTrendingListUseCaseImpl(repository)
 
     @Test
     fun fetchTrendingListSuccess() = runTest {
@@ -40,6 +41,26 @@ class FetchTrendingListUseCaseTest {
             result as ResultState.Success
             Assert.assertNotNull(result.data)
             Assert.assertEquals("Maria", result.data.first().userName)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun fetchTrendingListFailure() = runTest {
+        whenever(repository.fetchTrendingList()).thenReturn(flow {
+            emit(
+                ResultState.Error(
+                    "unexpected error"
+                )
+            )
+        })
+
+
+        fetchTrendingListUseCase().test {
+            val result = awaitItem()
+            result as ResultState.Error
+            Assert.assertNotNull(result)
+            Assert.assertEquals(     "unexpected error", result.message)
             awaitComplete()
         }
     }
