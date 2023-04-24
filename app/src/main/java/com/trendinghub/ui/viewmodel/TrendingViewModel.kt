@@ -9,7 +9,7 @@ import com.trendinghub.ui.TrendingUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-internal class TrendingViewModel
+class TrendingViewModel
 constructor(val fetchTrendingListUseCase: FetchTrendingListUseCase) : ViewModel() {
 
     private val _trendingUiState =

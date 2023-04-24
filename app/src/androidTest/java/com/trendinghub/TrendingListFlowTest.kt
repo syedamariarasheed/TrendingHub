@@ -7,7 +7,7 @@ import org.junit.Rule
 import org.junit.Test
 
 /* End to End test */
-internal class TrendingListFlowTest {
+class TrendingListFlowTest {
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()

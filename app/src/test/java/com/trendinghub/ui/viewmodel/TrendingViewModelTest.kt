@@ -16,7 +16,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
 @OptIn(ExperimentalCoroutinesApi::class)
-internal class TrendingViewModelTest {
+class TrendingViewModelTest {
 
     // Set Main dispatcher to not run coroutines eagerly
     @get:Rule
