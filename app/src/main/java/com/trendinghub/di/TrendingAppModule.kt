@@ -1,5 +1,8 @@
 package com.trendinghub.di
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.trendinghub.common.network.MoshiArrayListJsonAdapter
 import com.trendinghub.data.remote.ApiService
 import com.trendinghub.data.remote.source.TrendingRemoteDataSource
 import com.trendinghub.data.remote.source.TrendingRemoteDataSourceImpl
@@ -12,7 +15,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -39,10 +42,20 @@ object TrendingAppModule {
     }
 
     @Provides
-    fun provideRetrofit(): Retrofit {
+    fun provideRetrofit(
+        moshi: Moshi
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.github.com/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+    }
+
+    @Provides
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .add(MoshiArrayListJsonAdapter.FACTORY)
             .build()
     }
 
