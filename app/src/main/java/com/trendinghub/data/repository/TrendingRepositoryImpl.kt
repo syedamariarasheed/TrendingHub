@@ -16,7 +16,7 @@ class TrendingRepositoryImpl @Inject constructor(
         trendingRemoteDataSource.fetchTrendingList().collect {
             when (it) {
                 is ResultState.Success -> {
-                    val result = it.data.flatMap { it.items.map { it.toTrendingData() } }
+                    val result = it.data.items.map { it.toTrendingData() }
                     emit(ResultState.Success(result))
                 }
 

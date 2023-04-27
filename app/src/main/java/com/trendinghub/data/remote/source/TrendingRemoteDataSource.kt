@@ -5,5 +5,5 @@ import com.trendinghub.data.remote.source.model.TrendingResponseData
 import kotlinx.coroutines.flow.Flow
 
 interface TrendingRemoteDataSource {
-    fun fetchTrendingList(): Flow<ResultState<List<TrendingResponseData>>>
+    fun fetchTrendingList(): Flow<ResultState<TrendingResponseData>>
 }

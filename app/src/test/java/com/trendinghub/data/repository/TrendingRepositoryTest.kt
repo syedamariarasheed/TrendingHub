@@ -30,7 +30,7 @@ class TrendingRepositoryTest {
         whenever(trendingRemoteDataSource.fetchTrendingList()).thenReturn(flow {
             emit(
                 ResultState.Success(
-                    listOf(MockProvider.getTrendingResponseData())
+                    MockProvider.getTrendingResponseData()
                 )
             )
         })
