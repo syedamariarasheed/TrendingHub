@@ -6,9 +6,9 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class TrendingResponseData(
     @Json(name = "total_count")
-    var totalCount: Int? = null,
+    var totalCount: Int,
     @Json(name = "incomplete_results")
-    var incompleteResults: Boolean? = null,
+    var incompleteResults: Boolean,
     @Json(name = "items")
-    var items: ArrayList<Items> = arrayListOf()
+    var items: List<Items>
 )

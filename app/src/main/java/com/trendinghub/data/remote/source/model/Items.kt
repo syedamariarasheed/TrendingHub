@@ -18,151 +18,151 @@ data class Items(
     @Json(name = "owner")
     var owner: Owner,
     @Json(name = "html_url")
-    var htmlUrl: String? = null,
+    var htmlUrl: String?,
     @Json(name = "description")
-    var description: String? = null,
+    var description: String?,
     @Json(name = "fork")
-    var fork: Boolean? = null,
+    var fork: Boolean?,
     @Json(name = "url")
-    var url: String? = null,
+    var url: String?,
     @Json(name = "forks_url")
-    var forksUrl: String? = null,
+    var forksUrl: String?,
     @Json(name = "keys_url")
-    var keysUrl: String? = null,
+    var keysUrl: String?,
     @Json(name = "collaborators_url")
-    var collaboratorsUrl: String? = null,
+    var collaboratorsUrl: String?,
     @Json(name = "teams_url")
-    var teamsUrl: String? = null,
+    var teamsUrl: String?,
     @Json(name = "hooks_url")
-    var hooksUrl: String? = null,
+    var hooksUrl: String?,
     @Json(name = "issue_events_url")
-    var issueEventsUrl: String? = null,
+    var issueEventsUrl: String?,
     @Json(name = "events_url")
-    var eventsUrl: String? = null,
+    var eventsUrl: String?,
     @Json(name = "assignees_url")
-    var assigneesUrl: String? = null,
+    var assigneesUrl: String?,
     @Json(name = "branches_url")
-    var branchesUrl: String? = null,
+    var branchesUrl: String?,
     @Json(name = "tags_url")
-    var tagsUrl: String? = null,
+    var tagsUrl: String?,
     @Json(name = "blobs_url")
-    var blobsUrl: String? = null,
+    var blobsUrl: String?,
     @Json(name = "git_tags_url")
-    var gitTagsUrl: String? = null,
+    var gitTagsUrl: String?,
     @Json(name = "git_refs_url")
-    var gitRefsUrl: String? = null,
+    var gitRefsUrl: String?,
     @Json(name = "trees_url")
-    var treesUrl: String? = null,
+    var treesUrl: String?,
     @Json(name = "statuses_url")
-    var statusesUrl: String? = null,
+    var statusesUrl: String?,
     @Json(name = "languages_url")
-    var languagesUrl: String? = null,
+    var languagesUrl: String?,
     @Json(name = "stargazers_url")
-    var stargazersUrl: String? = null,
+    var stargazersUrl: String?,
     @Json(name = "contributors_url")
-    var contributorsUrl: String? = null,
+    var contributorsUrl: String?,
     @Json(name = "subscribers_url")
-    var subscribersUrl: String? = null,
+    var subscribersUrl: String?,
     @Json(name = "subscription_url")
-    var subscriptionUrl: String? = null,
+    var subscriptionUrl: String?,
     @Json(name = "commits_url")
-    var commitsUrl: String? = null,
+    var commitsUrl: String?,
     @Json(name = "git_commits_url")
-    var gitCommitsUrl: String? = null,
+    var gitCommitsUrl: String?,
     @Json(name = "comments_url")
-    var commentsUrl: String? = null,
+    var commentsUrl: String?,
     @Json(name = "issue_comment_url")
-    var issueCommentUrl: String? = null,
+    var issueCommentUrl: String?,
     @Json(name = "contents_url")
-    var contentsUrl: String? = null,
+    var contentsUrl: String?,
     @Json(name = "compare_url")
-    var compareUrl: String? = null,
+    var compareUrl: String?,
     @Json(name = "merges_url")
-    var mergesUrl: String? = null,
+    var mergesUrl: String?,
     @Json(name = "archive_url")
-    var archiveUrl: String? = null,
+    var archiveUrl: String?,
     @Json(name = "downloads_url")
-    var downloadsUrl: String? = null,
+    var downloadsUrl: String?,
     @Json(name = "issues_url")
-    var issuesUrl: String? = null,
+    var issuesUrl: String?,
     @Json(name = "pulls_url")
-    var pullsUrl: String? = null,
+    var pullsUrl: String?,
     @Json(name = "milestones_url")
-    var milestonesUrl: String? = null,
+    var milestonesUrl: String?,
     @Json(name = "notifications_url")
-    var notificationsUrl: String? = null,
+    var notificationsUrl: String?,
     @Json(name = "labels_url")
-    var labelsUrl: String? = null,
+    var labelsUrl: String?,
     @Json(name = "releases_url")
-    var releasesUrl: String? = null,
+    var releasesUrl: String?,
     @Json(name = "deployments_url")
-    var deploymentsUrl: String? = null,
+    var deploymentsUrl: String?,
     @Json(name = "created_at")
-    var createdAt: String? = null,
+    var createdAt: String?,
     @Json(name = "updated_at")
-    var updatedAt: String? = null,
+    var updatedAt: String?,
     @Json(name = "pushed_at")
-    var pushedAt: String? = null,
+    var pushedAt: String?,
     @Json(name = "git_url")
-    var gitUrl: String? = null,
+    var gitUrl: String?,
     @Json(name = "ssh_url")
-    var sshUrl: String? = null,
+    var sshUrl: String?,
     @Json(name = "clone_url")
-    var cloneUrl: String? = null,
+    var cloneUrl: String?,
     @Json(name = "svn_url")
-    var svnUrl: String? = null,
+    var svnUrl: String?,
     @Json(name = "homepage")
-    var homepage: String? = null,
+    var homepage: String?,
     @Json(name = "size")
-    var size: Int? = null,
+    var size: Int?,
     @Json(name = "stargazers_count")
     var stargazersCount: Long,
     @Json(name = "watchers_count")
-    var watchersCount: Int? = null,
+    var watchersCount: Int?,
     @Json(name = "language")
-    var language: String,
+    var language: String? = "",
     @Json(name = "has_issues")
-    var hasIssues: Boolean? = null,
+    var hasIssues: Boolean?,
     @Json(name = "has_projects")
-    var hasProjects: Boolean? = null,
+    var hasProjects: Boolean?,
     @Json(name = "has_downloads")
-    var hasDownloads: Boolean? = null,
+    var hasDownloads: Boolean?,
     @Json(name = "has_wiki")
-    var hasWiki: Boolean? = null,
+    var hasWiki: Boolean?,
     @Json(name = "has_pages")
-    var hasPages: Boolean? = null,
+    var hasPages: Boolean?,
     @Json(name = "has_discussions")
-    var hasDiscussions: Boolean? = null,
+    var hasDiscussions: Boolean?,
     @Json(name = "forks_count")
-    var forksCount: Int? = null,
+    var forksCount: Int?,
     @Json(name = "mirror_url")
-    var mirrorUrl: String? = null,
+    var mirrorUrl: String?,
     @Json(name = "archived")
-    var archived: Boolean? = null,
+    var archived: Boolean?,
     @Json(name = "disabled")
-    var disabled: Boolean? = null,
+    var disabled: Boolean?,
     @Json(name = "open_issues_count")
-    var openIssuesCount: Int? = null,
+    var openIssuesCount: Int?,
     @Json(name = "license")
     var license: License? = License(),
     @Json(name = "allow_forking")
-    var allowForking: Boolean? = null,
+    var allowForking: Boolean?,
     @Json(name = "is_template")
-    var isTemplate: Boolean? = null,
+    var isTemplate: Boolean?,
     @Json(name = "web_commit_signoff_required")
-    var webCommitSignOffRequired: Boolean? = null,
+    var webCommitSignOffRequired: Boolean?,
     @Json(name = "topics")
-    var topics: ArrayList<String> = arrayListOf(),
+    var topics: List<String> = listOf(),
     @Json(name = "visibility")
-    var visibility: String? = null,
+    var visibility: String?,
     @Json(name = "forks")
-    var forks: Int? = null,
+    var forks: Int?,
     @Json(name = "open_issues")
-    var openIssues: Int? = null,
+    var openIssues: Int?,
     @Json(name = "watchers")
-    var watchers: Int? = null,
+    var watchers: Int?,
     @Json(name = "default_branch")
-    var defaultBranch: String? = null,
+    var defaultBranch: String?,
     @Json(name = "score")
-    var score: Int? = null
+    var score: Int?
 )

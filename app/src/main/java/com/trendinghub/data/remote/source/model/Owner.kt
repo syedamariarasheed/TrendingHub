@@ -8,37 +8,37 @@ data class Owner(
     @Json(name = "login")
     var login: String,
     @Json(name = "id")
-    var id: Int? = null,
+    var id: Int?,
     @Json(name = "node_id")
-    var nodeId: String? = null,
+    var nodeId: String?,
     @Json(name = "avatar_url")
-    var avatarUrl: String,
+    var avatarUrl: String?,
     @Json(name = "gravatar_id")
-    var gravatarId: String? = null,
+    var gravatarId: String?,
     @Json(name = "url")
-    var url: String? = null,
+    var url: String?,
     @Json(name = "html_url")
-    var htmlUrl: String? = null,
+    var htmlUrl: String?,
     @Json(name = "followers_url")
-    var followersUrl: String? = null,
+    var followersUrl: String?,
     @Json(name = "following_url")
-    var followingUrl: String? = null,
+    var followingUrl: String?,
     @Json(name = "gists_url")
-    var gistsUrl: String? = null,
+    var gistsUrl: String?,
     @Json(name = "starred_url")
-    var starredUrl: String? = null,
+    var starredUrl: String?,
     @Json(name = "subscriptions_url")
-    var subscriptionsUrl: String? = null,
+    var subscriptionsUrl: String?,
     @Json(name = "organizations_url")
-    var organizationsUrl: String? = null,
+    var organizationsUrl: String?,
     @Json(name = "repos_url")
-    var reposUrl: String? = null,
+    var reposUrl: String?,
     @Json(name = "events_url")
-    var eventsUrl: String? = null,
+    var eventsUrl: String?,
     @Json(name = "received_events_url")
-    var receivedEventsUrl: String? = null,
+    var receivedEventsUrl: String?,
     @Json(name = "type")
-    var type: String? = null,
+    var type: String?,
     @Json(name = "site_admin")
-    var siteAdmin: Boolean? = null
+    var siteAdmin: Boolean?
 )

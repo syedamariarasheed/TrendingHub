@@ -5,8 +5,8 @@ import com.trendinghub.domain.model.TrendingData
 
 fun Items.toTrendingData() = TrendingData(
     userName = this.owner.login,
-    userAvatar = this.owner.avatarUrl,
+    userAvatar = this.owner.avatarUrl.orEmpty(),
     repoName = this.name,
     stargazersCount = this.stargazersCount,
-    language = this.language
+    language = this.language.orEmpty()
 )
