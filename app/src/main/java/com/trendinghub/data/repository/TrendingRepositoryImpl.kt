@@ -20,7 +20,9 @@ class TrendingRepositoryImpl @Inject constructor(
                     emit(ResultState.Success(result))
                 }
 
-                else -> {}
+                is ResultState.Error -> {
+                    emit(it)
+                }
             }
         }
     }

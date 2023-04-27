@@ -46,4 +46,22 @@ class TrendingRepositoryTest {
         }
 
     }
+
+    @Test
+    fun fetchTrendingListFailure() = runTest {
+        whenever(trendingRemoteDataSource.fetchTrendingList()).thenReturn(flow {
+            emit(
+                ResultState.Error(
+                    "error"
+                )
+            )
+        })
+
+        repository.fetchTrendingList().test {
+            val result = awaitItem() as ResultState.Error
+            Assert.assertEquals("error",result.message)
+            awaitComplete()
+        }
+
+    }
 }
