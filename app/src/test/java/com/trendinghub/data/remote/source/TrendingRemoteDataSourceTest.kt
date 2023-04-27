@@ -11,8 +11,10 @@ import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.kotlin.doAnswer
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
+import retrofit2.HttpException
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class TrendingRemoteDataSourceTest {
@@ -36,6 +38,46 @@ class TrendingRemoteDataSourceTest {
             val result = awaitItem()
             Assert.assertTrue(result is ResultState.Success)
             assertEquals(mockResponse, (result as ResultState.Success).data)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun fetchTrendingList_HttpException() = runTest {
+        whenever(apiService.fetchTrendingList()).thenThrow(
+            HttpException::class.java
+        )
+
+        trendingRemoteDataSource.fetchTrendingList().test {
+            val result = awaitItem()
+            Assert.assertTrue(result is ResultState.Error)
+            assertEquals("An alien is probably blocking your signal", (result as ResultState.Error).message)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun fetchTrendingList_IOException() = runTest {
+        doAnswer { throw java.io.IOException("") }.`when`(apiService)
+            .fetchTrendingList()
+
+        trendingRemoteDataSource.fetchTrendingList().test {
+            val result = awaitItem()
+            Assert.assertTrue(result is ResultState.Error)
+            assertEquals("Check your network connectivity", (result as ResultState.Error).message)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun fetchTrendingList_UnknownException() = runTest {
+        doAnswer { throw UnknownError("") }.`when`(apiService)
+            .fetchTrendingList()
+
+        trendingRemoteDataSource.fetchTrendingList().test {
+            val result = awaitItem()
+            Assert.assertTrue(result is ResultState.Error)
+            assertEquals("Unknown error", (result as ResultState.Error).message)
             awaitComplete()
         }
     }

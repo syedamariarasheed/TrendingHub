@@ -5,6 +5,8 @@ import com.trendinghub.data.remote.ApiService
 import com.trendinghub.data.remote.source.model.TrendingResponseData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import retrofit2.HttpException
+import java.io.IOException
 
 class TrendingRemoteDataSourceImpl(
     private val apiService: ApiService
@@ -23,6 +25,12 @@ suspend fun <T> safeApiCall(apiCall: suspend () -> T): ResultState<T> {
         val response = apiCall.invoke()
         ResultState.Success(response)
     } catch (throwable: Throwable) {
-        throw throwable
+        when (throwable) {
+            is IOException -> ResultState.Error("Check your network connectivity")
+            is HttpException -> ResultState.Error(
+               "An alien is probably blocking your signal"
+            )
+            else -> ResultState.Error("Unknown error")
+        }
     }
 }
