@@ -2,6 +2,7 @@ package com.trendinghub.di
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.trendinghub.common.Constants
 import com.trendinghub.common.network.MoshiArrayListJsonAdapter
 import com.trendinghub.data.remote.ApiService
 import com.trendinghub.data.remote.source.TrendingRemoteDataSource
@@ -46,7 +47,7 @@ object TrendingAppModule {
         moshi: Moshi
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }

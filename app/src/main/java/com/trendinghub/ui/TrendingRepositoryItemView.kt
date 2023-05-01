@@ -19,6 +19,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,7 +47,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                     start.linkTo(parent.start)
                 }
                 .testTag(stringResource(id = R.string.user_avatar))
-                .padding(4.dp)
+                .padding(8.dp)
                ,
             placeholder = painterResource(id = R.drawable.icon_placholder),
             error = painterResource(id = R.drawable.icon_placholder)
@@ -68,9 +70,14 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                 .constrainAs(repositoryName) {
                     top.linkTo(username.bottom)
                     start.linkTo(avatar.end)
+                    end.linkTo(parent.end)
+                    width = androidx.constraintlayout.compose.Dimension.fillToConstraints
                 }
                 .testTag(stringResource(id = R.string.repository_name)),
-            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold),
+            textAlign = TextAlign.Start,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
 
         Text(
@@ -112,8 +119,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
 
 @Composable
 @Preview(
-    showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES
+    showBackground = true
 )
 private fun PreviewTrendingRepositoryItemViewLight() {
     TrendingRepositoryItemView(MockProvider.getTrendingData())

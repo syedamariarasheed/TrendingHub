@@ -2,7 +2,7 @@ package com.trendinghub.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.trendinghub.common.ResultState
+import com.trendinghub.common.network.ResultState
 import com.trendinghub.common.collectEmission
 import com.trendinghub.domain.usecase.FetchTrendingListUseCase
 import com.trendinghub.ui.TrendingUiState

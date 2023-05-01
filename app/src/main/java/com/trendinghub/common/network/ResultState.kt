@@ -1,4 +1,4 @@
-package com.trendinghub.common
+package com.trendinghub.common.network
 
 sealed interface ResultState<out T> {
     data class Success<T>(val data: T) : ResultState<T>

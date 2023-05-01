@@ -6,16 +6,12 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.trendinghub.MainActivity
 import com.trendinghub.R
+import com.trendinghub.common.Constants
 import com.trendinghub.ui.common.MockProvider.getTrendingData
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class TrendingScreenTest {
 
     @get:Rule
@@ -82,11 +78,14 @@ class TrendingScreenTest {
             composeTestRule.activity.getString(R.string.loading)
         ).onFirst().assertIsDisplayed()
 
-        trendingUiState.value = TrendingUiState.Error
+        trendingUiState.value = TrendingUiState.Error(Constants.UNKNOWN_ERROR_MESSAGE)
 
         composeTestRule.onNodeWithTag(
             composeTestRule.activity.getString(R.string.data_not_found)
         ).assertIsDisplayed()
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(R.string.error_description)
+        ).assertTextEquals("Unknown error")
 
         // retry - assert loading
         composeTestRule.onNodeWithText(composeTestRule.activity.getString(R.string.retry))

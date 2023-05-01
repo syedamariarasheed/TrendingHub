@@ -73,7 +73,8 @@ fun TrendingFailureView(onRetry: () -> Unit, message: String) {
             text = message,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(0.08f),
+                .weight(0.08f)
+                .testTag(stringResource(R.string.error_description)),
             textAlign = TextAlign.Center
         )
 

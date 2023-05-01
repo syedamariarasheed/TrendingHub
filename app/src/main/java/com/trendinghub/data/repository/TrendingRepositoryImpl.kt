@@ -1,6 +1,6 @@
 package com.trendinghub.data.repository
 
-import com.trendinghub.common.ResultState
+import com.trendinghub.common.network.ResultState
 import com.trendinghub.data.mapper.toTrendingData
 import com.trendinghub.data.remote.source.TrendingRemoteDataSource
 import com.trendinghub.domain.model.TrendingData

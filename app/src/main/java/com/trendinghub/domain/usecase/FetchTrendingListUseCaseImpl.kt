@@ -1,6 +1,6 @@
 package com.trendinghub.domain.usecase
 
-import com.trendinghub.common.ResultState
+import com.trendinghub.common.network.ResultState
 import com.trendinghub.domain.model.TrendingData
 import com.trendinghub.domain.repository.TrendingRepository
 import kotlinx.coroutines.flow.Flow

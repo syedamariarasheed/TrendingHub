@@ -2,7 +2,7 @@ package com.trendinghub.domain.usecase
 
 import app.cash.turbine.test
 import com.MainDispatcherRule
-import com.trendinghub.common.ResultState
+import com.trendinghub.common.network.ResultState
 import com.trendinghub.domain.repository.TrendingRepository
 import com.trendinghub.ui.common.MockProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi

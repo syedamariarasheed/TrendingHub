@@ -2,7 +2,7 @@ package com.trendinghub.ui.viewmodel
 
 import app.cash.turbine.test
 import com.MainDispatcherRule
-import com.trendinghub.common.ResultState
+import com.trendinghub.common.network.ResultState
 import com.trendinghub.domain.usecase.FetchTrendingListUseCase
 import com.trendinghub.ui.TrendingUiState
 import com.trendinghub.ui.common.MockProvider
