@@ -30,7 +30,10 @@ import com.trendinghub.ui.common.MockProvider
 import com.trendinghub.ui.common.theme.TrendingHubTheme
 
 @Composable
-fun TrendingRepositoryItemView(trendingData: TrendingData) {
+fun TrendingRepositoryItemView(
+    trendingData: TrendingData,
+    showDivider: Boolean = true
+) {
     ConstraintLayout(
         modifier = Modifier.padding(10.dp)
     ) {
@@ -45,8 +48,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                     start.linkTo(parent.start)
                 }
                 .testTag(stringResource(id = R.string.user_avatar))
-                .padding(8.dp)
-               ,
+                .padding(8.dp),
             placeholder = painterResource(id = R.drawable.icon_placholder),
             error = painterResource(id = R.drawable.icon_placholder)
         )
@@ -105,6 +107,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                 }
                 .testTag(stringResource(id = R.string.stargazers_count))
         )
+        if (showDivider)
         Divider(
             color = Color.LightGray,
             modifier = Modifier

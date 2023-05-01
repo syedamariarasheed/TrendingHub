@@ -21,9 +21,12 @@ fun TrendingRepositoryListView(
             .padding(top = 10.dp)
             .testTag(stringResource(id = R.string.trending_list))
     ) {
-        trendingDataList.forEach { trendingData ->
+        trendingDataList.forEachIndexed { index, trendingData ->
             item {
-                TrendingRepositoryItemView(trendingData = trendingData)
+                TrendingRepositoryItemView(
+                    trendingData = trendingData,
+                    showDivider = trendingDataList.lastIndex != index
+                )
             }
         }
     }
