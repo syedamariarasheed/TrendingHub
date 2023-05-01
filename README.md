@@ -17,3 +17,8 @@ TrendingHub is an Android application that was implemented using MAD skills. It 
 - Hilt as dependency injection.
 
 This is brief, would be great to discuss more in detail :) 
+
+
+<img width="340" alt="Screenshot 2023-05-02 at 12 02 42 AM" src="https://user-images.githubusercontent.com/45803103/235529897-7e2d24c5-ad75-4e9e-8cec-d2d1cc519741.png">  <img width="340" alt="Screenshot 2023-05-02 at 12 02 36 AM" src="https://user-images.githubusercontent.com/45803103/235529822-caa663af-320d-407b-9bdb-0b6ec4e40e88.png">
+
+
