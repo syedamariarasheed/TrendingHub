@@ -10,7 +10,7 @@ val Typography = Typography(
     h2 = TextStyle(),
     h3 = TextStyle(),
     h4 = TextStyle(),
-    h6 = TextStyle(),
+    h6 = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
     subtitle1 = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold),
     subtitle2 = TextStyle(fontSize = 14.sp),
     button = TextStyle(),

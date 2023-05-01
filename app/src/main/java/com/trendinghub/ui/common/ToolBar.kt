@@ -17,6 +17,7 @@ fun ToolBar(text: String) {
                 text = text,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.h6
             )
         },
         backgroundColor = MaterialTheme.colors.background
