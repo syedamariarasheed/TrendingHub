@@ -24,7 +24,8 @@ class TrendingScreenTest {
         composeTestRule.activity.setContent {
             TrendingScreen(
                 trendingUiState.value,
-                onRetry = { trendingUiState.value = TrendingUiState.Loading }
+                onRetry = { trendingUiState.value = TrendingUiState.Loading },
+                onRefresh = {  }
             )
         }
     }
@@ -93,6 +94,29 @@ class TrendingScreenTest {
 
         composeTestRule.onAllNodesWithTag(
             composeTestRule.activity.getString(R.string.loading)
+        ).onFirst().assertIsDisplayed()
+
+    }
+
+    @Test
+    fun swipeToRefresh()  {
+        composeTestRule.onAllNodesWithTag(
+            composeTestRule.activity.getString(R.string.loading)
+        ).onFirst().assertIsDisplayed()
+
+        trendingUiState.value = TrendingUiState.TrendingList(listOf(getTrendingData()))
+
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(R.string.trending_list)
+        ).assertIsDisplayed()
+
+        // Perform swipe-to-refresh gesture
+        composeTestRule.onNodeWithTag(
+            composeTestRule.activity.getString(R.string.trending_list)
+        ) .performTouchInput { swipeDown() }
+
+        composeTestRule.onAllNodesWithTag(
+            composeTestRule.activity.getString(R.string.swipe_to_refresh)
         ).onFirst().assertIsDisplayed()
 
     }
