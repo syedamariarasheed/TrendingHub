@@ -24,14 +24,16 @@ fun TrendingScreen(
 
     TrendingScreen(
         trendingUiState = trendingUiState.value,
-        onRetry = viewModel::fetchTrendingList
+        onRetry = viewModel::fetchTrendingList,
+        onRefresh = viewModel::fetchTrendingList
     )
 }
 
 @Composable
 fun TrendingScreen(
     trendingUiState: TrendingUiState,
-    onRetry: () -> Unit
+    onRetry: () -> Unit,
+    onRefresh: () -> Unit
 ) {
 
     Scaffold {
@@ -48,7 +50,7 @@ fun TrendingScreen(
                 }
 
                 is TrendingUiState.TrendingList -> {
-                    TrendingRepositoryListView(trendingDataList = trendingUiState.data)
+                    TrendingRepositoryListView(trendingDataList = trendingUiState.data, onRefresh)
                 }
 
                 is TrendingUiState.Error -> {
@@ -62,7 +64,8 @@ fun TrendingScreen(
 @Composable
 @Preview(showSystemUi = true)
 fun TrendingScreenLoadingPreview() {
-    TrendingScreen(trendingUiState = TrendingUiState.Loading, onRetry = {})
+    TrendingScreen(trendingUiState = TrendingUiState.Loading, onRetry = {},
+        onRefresh = {})
 }
 
 @Composable
@@ -76,7 +79,8 @@ fun TrendingScreenListingPreview() {
                 MockProvider.getTrendingData()
             )
         ),
-        onRetry = {}
+        onRetry = {},
+        onRefresh = {}
     )
 }
 
@@ -93,7 +97,8 @@ fun TrendingScreenListingPreviewDark() {
                         MockProvider.getTrendingData()
                     )
                 ),
-                onRetry = {}
+                onRetry = {},
+                onRefresh = {}
             )
         }
     }
@@ -102,5 +107,8 @@ fun TrendingScreenListingPreviewDark() {
 @Composable
 @Preview(showSystemUi = true)
 fun TrendingScreenErrorPreview() {
-    TrendingScreen(trendingUiState = TrendingUiState.Error("An alien is blocking your signal"), onRetry = {})
+    TrendingScreen(
+        trendingUiState = TrendingUiState.Error("An alien is blocking your signal"),
+        onRetry = {},
+        onRefresh = {})
 }

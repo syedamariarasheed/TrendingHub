@@ -12,4 +12,5 @@
     <string name="retry">RETRY</string>
     <string name="error_message">Something went wrong</string>
     <string name="error_description">errorMessage</string>
+    <string name="swipe_to_refresh">swipe-to-refresh</string>
 </resources>

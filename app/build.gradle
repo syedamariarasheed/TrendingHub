@@ -88,4 +88,6 @@ dependencies {
     def retrofitVersion = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.25.1"
 }
