@@ -5,6 +5,7 @@ TrendingHub is an Android application that was implemented using MAD skills. It 
 - App shows Github repositories trending list. (Note: expandable list view is not implemented because content of list item is minimal so It doesn’t seem appropriate with ui experience).
 - Dark mode support that means when user change the display setting as dark mode, within application it provides dark theme. (You can also view in composable previews).
 - Failure handling, right now failure segregated with 3 types Network connectivity , API failure and unknown failure (default) with proper message.
+- Swipe-to-refresh to show updated data when requested.
 
 ### Architecture description & development approach:
 
