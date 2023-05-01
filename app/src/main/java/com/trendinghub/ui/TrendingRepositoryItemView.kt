@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -17,13 +18,10 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.trendinghub.R
@@ -63,6 +61,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                 .testTag(
                     stringResource(id = R.string.user_name)
                 ),
+            style = MaterialTheme.typography.subtitle2
         )
         Text(
             text = trendingData.repoName,
@@ -74,7 +73,7 @@ fun TrendingRepositoryItemView(trendingData: TrendingData) {
                     width = androidx.constraintlayout.compose.Dimension.fillToConstraints
                 }
                 .testTag(stringResource(id = R.string.repository_name)),
-            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold),
+            style = MaterialTheme.typography.subtitle1,
             textAlign = TextAlign.Start,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis

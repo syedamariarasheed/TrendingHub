@@ -93,6 +93,7 @@ fun TrendingFailureView(onRetry: () -> Unit, message: String) {
             Text(
                 text = stringResource(id = R.string.retry),
                 color = Green,
+                style = MaterialTheme.typography.button
             )
         }
     }
