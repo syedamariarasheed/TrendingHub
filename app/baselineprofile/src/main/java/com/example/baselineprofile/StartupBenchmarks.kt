@@ -12,6 +12,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+
 /**
  * This test class benchmarks the speed of app startup.
  * Run this benchmark to verify how effective a Baseline Profile is.
