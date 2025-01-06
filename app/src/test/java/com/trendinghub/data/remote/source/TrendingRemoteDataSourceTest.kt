@@ -56,6 +56,7 @@ class TrendingRemoteDataSourceTest {
         }
     }
 
+
     @Test
     fun fetchTrendingList_IOException() = runTest {
         doAnswer { throw java.io.IOException("") }.`when`(apiService)
