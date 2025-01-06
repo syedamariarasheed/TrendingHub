@@ -1,38 +1,29 @@
-name: Run Unit Tests
+name: Android CI
 
 on:
   push:
-    branches:
-      - setup-github-actions
+    branches: [ "setup-github-actions" ]
   pull_request:
-    branches:
-      - setup-github-actions
+    branches: [ "setup-github-actions" ]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  build:
 
-      - name: Set up JDK 11
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: set up JDK 11
         uses: actions/setup-java@v4
         with:
           java-version: '11'
+          distribution: 'temurin'
+          cache: gradle
 
-      - name: Cache Gradle dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v2
-        with:
-          sdk-version: '30'
-
-      - name: Build and test
+      - name: Run test
         run: ./gradlew :app:testDebugUnitTest --tests com.trendinghub.data.remote.source.TrendingRemoteDataSourceTest
