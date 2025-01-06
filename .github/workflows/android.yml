@@ -1,10 +1,13 @@
 name: Android CI
 
+#on:
+#  push:
+#    branches: [ "setup-github-actions" ]
+#  pull_request:
+#    branches: [ "setup-github-actions" ]
+
 on:
-  push:
-    branches: [ "setup-github-actions" ]
-  pull_request:
-    branches: [ "setup-github-actions" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -26,8 +29,5 @@ jobs:
 #      - name: Build with Gradle
 #        run: ./gradlew build
 
-#      - name: Run test
-#        run: ./gradlew :app:testDebugUnitTest --tests com.trendinghub.data.remote.source.TrendingRemoteDataSourceTest
-
-      - name: access secret
-        run: echo "${{ secrets.TEST_SECRET_KEY }}"
+      - name: Run test
+        run: ./gradlew :app:testDebugUnitTest --tests com.trendinghub.data.remote.source.TrendingRemoteDataSourceTest
