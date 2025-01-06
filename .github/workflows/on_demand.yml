@@ -1,8 +1,7 @@
-name: Android Test Workflow
+name: On demand workflow
 
 on:
-  push:
-    branches: [ "setup-github-actions" ]
+  workflow_dispatch:
 
 jobs:
   build:
