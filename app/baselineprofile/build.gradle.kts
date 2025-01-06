@@ -3,7 +3,7 @@ import com.android.build.api.dsl.ManagedVirtualDevice
 plugins {
     id("com.android.test")
     id("org.jetbrains.kotlin.android")
-    id("androidx.baselineprofile")
+//    id("androidx.baselineprofile")
 }
 
 android {
@@ -42,10 +42,10 @@ android {
 
 // This is the configuration block for the Baseline Profile plugin.
 // You can specify to run the generators on a managed devices or connected devices.
-baselineProfile {
-    managedDevices += "pixel6Api33"
-    useConnectedDevices = false
-}
+//baselineProfile {
+//    managedDevices += "pixel6Api33"
+//    useConnectedDevices = false
+//}
 
 dependencies {
     implementation("androidx.test.ext:junit:1.2.1")
