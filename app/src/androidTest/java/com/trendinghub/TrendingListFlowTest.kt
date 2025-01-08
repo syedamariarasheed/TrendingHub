@@ -1,7 +1,5 @@
 package com.trendinghub
 
-import androidx.compose.ui.test.SemanticsMatcher
-import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
@@ -20,17 +18,16 @@ class TrendingListFlowTest {
 
     @Test
     fun validateIsTrendingListVisible() {
-        composeTestRule.waitUntil(5000L) {
-            composeTestRule
-                .onAllNodesWithTag(composeTestRule.activity.getString(R.string.trending_list))
-                .fetchSemanticsNodes().size == 1
-        }
+        composeTestRule.waitUntilExists(
+            composeTestRule.activity.getString(R.string.trending_list)
+        )
     }
 
     @Test
     fun validateSwipeToRefresh() {
         composeTestRule.waitUntilExists(
-            hasTestTag(composeTestRule.activity.getString(R.string.trending_list)))
+            composeTestRule.activity.getString(R.string.trending_list)
+        )
 
         // Perform swipe-to-refresh gesture
         composeTestRule.onNodeWithTag(
@@ -40,19 +37,21 @@ class TrendingListFlowTest {
         }
 
         composeTestRule.waitUntilExists(
-            hasTestTag(composeTestRule.activity.getString(R.string.loading)))
+            composeTestRule.activity.getString(R.string.loading)
+        )
 
         composeTestRule.waitUntilExists(
-            hasTestTag(composeTestRule.activity.getString(R.string.trending_list)))
+            composeTestRule.activity.getString(R.string.trending_list)
+        )
     }
 
     companion object {
         fun ComposeContentTestRule.waitUntilExists(
-            matcher: SemanticsMatcher,
+            tag: String,
             timeoutMillis: Long = 3000L
         ) {
             this.waitUntil(timeoutMillis) {
-                this.onAllNodes(matcher).fetchSemanticsNodes().isNotEmpty()
+                this.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty()
             }
         }
     }
