@@ -18,9 +18,6 @@ import org.mockito.kotlin.whenever
 @OptIn(ExperimentalCoroutinesApi::class)
 class TrendingRepositoryTest {
 
-    @get:Rule
-    val dispatcherRule = MainDispatcherRule()
-
     private val trendingRemoteDataSource: TrendingRemoteDataSource = mock()
 
     private val repository: TrendingRepository = TrendingRepositoryImpl(trendingRemoteDataSource)

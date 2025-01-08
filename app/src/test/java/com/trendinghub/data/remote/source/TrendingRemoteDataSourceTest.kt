@@ -19,9 +19,6 @@ import retrofit2.HttpException
 @OptIn(ExperimentalCoroutinesApi::class)
 class TrendingRemoteDataSourceTest {
 
-    @get:Rule
-    val dispatcherRule = MainDispatcherRule()
-
     private val apiService: ApiService = mock()
 
     private val trendingRemoteDataSource : TrendingRemoteDataSource =

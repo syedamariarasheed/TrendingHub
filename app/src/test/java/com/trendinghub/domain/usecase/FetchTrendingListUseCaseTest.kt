@@ -17,9 +17,6 @@ import org.mockito.kotlin.whenever
 @OptIn(ExperimentalCoroutinesApi::class)
 class FetchTrendingListUseCaseTest {
 
-    @get:Rule
-    val dispatcherRule = MainDispatcherRule()
-
     private val repository: TrendingRepository = mock()
 
     private var fetchTrendingListUseCase: FetchTrendingListUseCase =
