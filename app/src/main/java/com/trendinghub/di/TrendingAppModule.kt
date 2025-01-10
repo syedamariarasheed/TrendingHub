@@ -15,6 +15,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class TrendingAppModule {
 
+
     @Binds
     abstract fun provideFetchTrendingListUseCase(fetchTrendingListUseCaseImpl: FetchTrendingListUseCaseImpl): FetchTrendingListUseCase
 
